@@ -1,0 +1,231 @@
+:root {
+    /* Main Dark Palette */
+    --clr-background-dark: #121223; /* Very deep blue-purple, almost black */
+    --clr-container-bg: #1e1e30;    /* Slightly lighter dark for cards/containers */
+    --clr-border: #303045;          /* Darker border for separation */
+    --clr-text-light: #ffffff;      /* Pure white for primary text */
+    --clr-text-muted: #a0a0b5;      /* Lighter gray for secondary text/placeholders */
+
+    /* Accent Colors inspired by the image */
+    --clr-accent-blue: #5a7dff;     /* Bright blue for main buttons/active */
+    --clr-accent-green: #4ade80;    /* Vibrant green for complete */
+    --clr-accent-orange: #ff9f43;   /* Energetic orange (from other screens in image) */
+    --clr-accent-purple: #8e7dff;   /* Soft purple (from other screens in image) */
+
+    /* Gradients (example from bottom cards in image) */
+    --gradient-blue-purple: linear-gradient(135deg, #5a7dff, #8e7dff);
+
+    /* Shadows for dark theme */
+    --shadow-dark-subtle: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --shadow-dark-hover: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--clr-background-dark); /* Solid dark background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 0;
+    color: var(--clr-text-light); /* Default text color */
+}
+
+.container {
+    background-color: var(--clr-container-bg);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-dark-subtle);
+    width: 100%;
+    max-width: 550px;
+    box-sizing: border-box;
+    border: 1px solid var(--clr-border); /* Subtle border for definition */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.container:hover {
+    box-shadow: var(--shadow-dark-hover);
+}
+
+h1 {
+    text-align: center;
+    color: var(--clr-text-light);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#taskInput {
+    flex-grow: 1;
+    padding: 14px 18px;
+    border: 1px solid var(--clr-border);
+    border-radius: 8px;
+    font-size: 1.1em;
+    outline: none;
+    color: var(--clr-text-light);
+    background-color: #2a2a40; /* Slightly different dark shade for input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#taskInput::placeholder {
+    color: var(--clr-text-muted);
+    opacity: 0.7;
+}
+
+#taskInput:focus {
+    border-color: var(--clr-accent-blue);
+    box-shadow: 0 0 0 3px rgba(90, 125, 255, 0.3); /* Accent blue glow */
+}
+
+#addTaskBtn {
+    background-color: var(--clr-accent-blue);
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Deeper shadow for buttons */
+}
+
+#addTaskBtn:hover {
+    background-color: #4a6edb; /* Slightly darker on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+#addTaskBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    background-color: #252538; /* Slightly darker than container for task items */
+    border: 1px solid var(--clr-border);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow for tasks */
+}
+
+.task-item:hover {
+    background-color: #2b2b42; /* Even darker on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+}
+
+.task-item.completed {
+    background-color: #1a2a3b; /* A more subdued dark blue for completed */
+    text-decoration: line-through;
+    color: var(--clr-text-muted);
+    opacity: 0.7;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2); /* Inset shadow for completed */
+}
+
+.task-text {
+    flex-grow: 1;
+    font-size: 1.15em;
+    color: var(--clr-text-light);
+    word-break: break-word;
+    margin-right: 15px;
+    line-height: 1.4;
+}
+
+.task-item.completed .task-text {
+    color: var(--clr-text-muted);
+}
+
+.task-actions button {
+    background: none;
+    border: none;
+    font-size: 1.3em; /* Slightly larger icons */
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.task-actions button:hover {
+    transform: scale(1.2); /* More pronounced pop effect */
+}
+
+.task-actions .complete-btn {
+    color: var(--clr-accent-green);
+}
+
+.task-actions .complete-btn:hover {
+    color: #38c16e; /* Darker green on hover */
+}
+
+.task-actions .edit-btn {
+    color: var(--clr-accent-orange); /* Using orange for edit */
+}
+
+.task-actions .edit-btn:hover {
+    color: #e08c3a;
+}
+
+.task-actions .delete-btn {
+    color: var(--clr-accent-purple); /* Using purple for delete */
+}
+
+.task-actions .delete-btn:hover {
+    color: #7b6edf;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    #taskInput, #addTaskBtn {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .task-text {
+        margin-bottom: 10px;
+        margin-right: 0;
+        width: 100%;
+    }
+    .task-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .task-actions button {
+        margin-left: 5px;
+        font-size: 1.2em;
+    }
+}
